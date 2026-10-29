@@ -10,4 +10,5 @@
 <!-- LOVABLE:END -->
 
 - The home-page hero is a presentation-only component in `src/components/hero.tsx`; page routes keep content data and composition only. Shared visual primitives (glass, mesh, grid, grain, spotlight, shine, marquee, tilt) live as `@utility` tokens in `src/styles.css` so every page can reuse them. Why: keeps route files readable and stops hero styling from being duplicated when other sections adopt it.
+- Home-page sections are presentation-only components in `src/components/home-sections.tsx`, with experience and career content supplied by the index route; home-only styling must not alter shared sections on other pages. Why: preserves page composition and limits visual changes to their requested scope.
 
