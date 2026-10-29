@@ -125,10 +125,6 @@
   0% { transform: translateX(-130%) skewX(-14deg); }
   100% { transform: translateX(240%) skewX(-14deg); }
 }
-@keyframes cueRun {
-  0% { transform: translateY(-110%); }
-  65%, 100% { transform: translateY(210%); }
-}
 
 /* ---------- Hero: surfaces ---------- */
 @utility glass {
@@ -197,9 +193,6 @@
   animation: sweep 4.5s ease-in-out infinite;
 }
 
-@utility cue {
-  animation: cueRun 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
