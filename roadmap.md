@@ -1,2 +1,2 @@
 - [x] Modernize home-page experience highlights, career roadmap, quote, and contact invitation without changing content.
-- [ ] Verify section layouts and their destination links on desktop and mobile.
+- [x] Verify section layouts and their destination links on desktop and mobile.
