@@ -91,30 +91,30 @@ export function Hero() {
             three-month HRBP internship at Airtel and led recruitment at the IILM University Incubation Lab.
           </p>
 
-          <div className="fade-up mt-9 flex flex-wrap items-center gap-3" style={{ animationDelay: "500ms" }}>
+          <div className="fade-up mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style={{ animationDelay: "500ms" }}>
             <Link
               to="/projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-accent px-7 py-3.5 font-semibold text-accent-foreground shadow-lg shadow-gold/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gold/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-accent px-7 py-3.5 font-semibold text-accent-foreground shadow-lg shadow-gold/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gold/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:w-auto"
             >
               View projects
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
               to="/resume"
-              className="glass rounded-full px-7 py-3.5 font-semibold transition hover:bg-primary-foreground/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              className="glass w-full rounded-full px-7 py-3.5 text-center font-semibold transition hover:bg-primary-foreground/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:w-auto"
             >
               Resume
             </Link>
             <Link
               to="/contact"
-              className="rounded-full px-4 py-3.5 font-semibold text-primary-foreground/80 underline-offset-8 transition hover:text-primary-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60"
+              className="w-full rounded-full px-4 py-3 text-center font-semibold text-primary-foreground/80 underline-offset-8 transition hover:text-primary-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60 sm:w-auto"
             >
               Contact
             </Link>
           </div>
 
           <dl
-            className="fade-up mt-11 flex flex-wrap gap-x-9 gap-y-5 border-t border-primary-foreground/12 pt-7"
+            className="fade-up mt-11 grid grid-cols-3 gap-4 border-t border-primary-foreground/12 pt-7"
             style={{ animationDelay: "620ms" }}
           >
             {STATS.map((s) => (
