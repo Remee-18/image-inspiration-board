@@ -181,9 +181,10 @@
 }
 
 @utility marquee-mask {
-  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent);
 }
+
 
 @utility tilt {
   transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));

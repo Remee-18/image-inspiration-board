@@ -73,7 +73,7 @@ export function Hero() {
           <h1 className="mt-7 text-[3.1rem] leading-[1.02] sm:text-6xl lg:text-[4.6rem]">
             <span className="block overflow-hidden pb-1">
               <span className="line-rise block" style={{ animationDelay: "60ms" }}>
-                Hello, I&rsquo;m Remee &mdash;
+                Hello, I&rsquo;m Remee
               </span>
             </span>
             <span className="block overflow-hidden pb-3">
@@ -140,43 +140,45 @@ export function Hero() {
                 className="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_0%,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]"
               />
               <div className="relative grid h-full place-items-center text-center text-primary">
-                <div>
-                  <span className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gold/40 bg-card/60 shadow-sm">
+                <div aria-hidden className="pointer-events-none absolute inset-4 rounded-[1.7rem] border border-dashed border-gold/45" />
+                <div className="px-6">
+                  <span className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gold/40 bg-card/70 shadow-sm">
                     <span className="font-display text-6xl leading-none">R</span>
                   </span>
                   <p className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-muted-foreground">
                     Profile photo placeholder
                   </p>
-                  <p className="mt-2 text-xs text-muted-foreground/80">Send your photo and I&rsquo;ll drop it in.</p>
                 </div>
               </div>
+
               <div aria-hidden className="sweep absolute inset-y-0 -left-1/2 w-1/2 opacity-30" />
             </div>
           </div>
 
-          <div className="glass animate-float absolute -left-5 top-12 hidden rounded-2xl px-4 py-3 shadow-xl shadow-primary/40 sm:block">
-            <p className="flex items-center gap-2 font-display text-xl text-primary-foreground">
+          <div className="animate-float absolute -left-5 top-12 hidden rounded-2xl bg-card px-4 py-3 shadow-xl shadow-primary/50 ring-1 ring-primary-foreground/15 sm:block">
+            <p className="flex items-center gap-2 font-display text-xl text-primary">
               <BadgeCheck className="h-4 w-4 text-gold" /> 50+
             </p>
-            <p className="mt-0.5 text-[0.68rem] uppercase tracking-[0.16em] text-primary-foreground/60">
+            <p className="mt-0.5 text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
               feedback interviews
             </p>
           </div>
 
-          <div className="glass animate-float-late absolute -right-4 bottom-14 hidden rounded-2xl px-4 py-3 shadow-xl shadow-primary/40 sm:block">
-            <p className="flex items-center gap-2 font-display text-xl text-primary-foreground">
+          <div className="animate-float-late absolute -right-4 bottom-14 hidden rounded-2xl bg-card px-4 py-3 shadow-xl shadow-primary/50 ring-1 ring-primary-foreground/15 sm:block">
+            <p className="flex items-center gap-2 font-display text-xl text-primary">
               <GraduationCap className="h-4 w-4 text-gold" /> MBA
             </p>
-            <p className="mt-0.5 text-[0.68rem] uppercase tracking-[0.16em] text-primary-foreground/60">
+            <p className="mt-0.5 text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
               HR &amp; Marketing
             </p>
           </div>
 
-          <div className="glass absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-xs text-primary-foreground/80">
+          <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-card px-4 py-2 text-xs font-semibold text-primary shadow-xl shadow-primary/50 ring-1 ring-primary-foreground/15">
             <MapPin className="h-3.5 w-3.5 text-gold" />
             Greater Noida, India
           </div>
         </div>
+
       </div>
 
       {/* Keyword ticker */}
