@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Briefcase, Users, Sparkles, Quote } from "lucide-react";
+import { Briefcase, Users, Sparkles, Quote } from "lucide-react";
 import { Card, CTA, Section, meta } from "@/components/site";
+import { Hero } from "@/components/hero";
 
 export const Route = createFileRoute("/")({
   head: () => meta("Remee — Aspiring HR Professional | Talent Acquisition & HRBP", "MBA (HR & Marketing) student at IILM University with an Airtel HRBP internship and recruitment leadership experience."),
@@ -22,36 +23,7 @@ const steps = [
 function Index() {
   return (
     <>
-      <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-[1.2fr_1fr] md:py-28">
-          <div className="fade-up">
-            <p className="eyebrow">People First · Purpose Driven · Always Learning</p>
-            <h1 className="mt-4 text-5xl leading-tight md:text-6xl">Hello, I'm Remee —<br /><span className="text-accent">aspiring HR professional.</span></h1>
-            <p className="mt-6 max-w-xl text-lg opacity-80">
-              MBA student at IILM University, Greater Noida (HR & Marketing, 2025–2027). I completed a three-month HRBP internship at Airtel and led recruitment at the IILM University Incubation Lab.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-accent-foreground transition hover:opacity-90">View projects <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/resume" className="rounded-full border border-primary-foreground/40 px-6 py-3 font-semibold transition hover:bg-primary-foreground/10">Resume</Link>
-              <Link to="/contact" className="rounded-full px-6 py-3 font-semibold underline-offset-4 hover:underline">Contact</Link>
-            </div>
-          </div>
-          <div className="relative mx-auto w-full max-w-sm fade-up">
-            <div className="absolute -right-6 -top-6 h-40 w-40 rounded-full bg-gold/70" />
-            <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full border-4 border-accent" />
-            <div className="relative grid aspect-[4/5] place-items-center rounded-[2rem] bg-beige text-center text-primary">
-              <div>
-                <p className="font-display text-7xl">R</p>
-                <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">Profile photo placeholder</p>
-              </div>
-            </div>
-            <div className="absolute -left-4 top-10 rounded-xl bg-card px-4 py-3 text-sm text-foreground shadow-lg">
-              <p className="font-display text-2xl text-primary">50+</p>
-              <p className="text-xs text-muted-foreground">feedback interviews</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       <Section eyebrow="Highlights" title="Experience at a glance">
         <div className="grid gap-6 md:grid-cols-3">
