@@ -3,14 +3,8 @@ import { describe, expect, it, vi } from "vitest";
 
 import { ContactForm } from "@/components/contact-form";
 
-// jsdom cannot navigate, so capture the mailto target the form writes to.
-function captureLocationHref() {
-  const setter = vi.fn();
-  const fake = { assign: vi.fn(), replace: vi.fn(), reload: vi.fn() };
-  Object.defineProperty(fake, "href", { set: setter, get: () => "", configurable: true });
-  Object.defineProperty(window, "location", { value: fake, configurable: true, writable: true });
-  return setter;
-}
+const send = vi.fn().mockResolvedValue({ status: 200 });
+vi.mock("@emailjs/browser", () => ({ default: { send } }));
 
 function submit() {
   fireEvent.click(screen.getByRole("button", { name: /send message/i }));
@@ -35,22 +29,20 @@ describe("Contact form validation", () => {
     expect(screen.getByText("Please enter a valid email address.")).toBeInTheDocument();
   });
 
-  it("accepts a complete entry and hands the message to the email app", () => {
-    const setHref = captureLocationHref();
+  it("sends a complete entry through EmailJS", async () => {
     render(<ContactForm />);
-
     fireEvent.change(screen.getByLabelText("Full Name"), { target: { value: "Asha Verma" } });
     fireEvent.change(screen.getByLabelText("Email Address"), { target: { value: "asha@example.com" } });
     fireEvent.change(screen.getByLabelText("Subject"), { target: { value: "HRBP role" } });
-    fireEvent.change(screen.getByLabelText("Message"), { target: { value: "Hello Remee, we have a role for you." } });
+    fireEvent.change(screen.getByLabelText("Message"), { target: { value: "Hello Remee" } });
     submit();
 
-    expect(screen.queryByText("Please enter a valid email address.")).toBeNull();
-    expect(setHref).toHaveBeenCalledTimes(1);
-    const href = String(setHref.mock.calls[0]?.[0]);
-    expect(href).toContain("mailto:rajremee2000@gmail.com");
-    expect(href).toContain("subject=HRBP%20role");
-    expect(href).toContain("Hello%20Remee");
-    expect(screen.getByText("Your email app has opened with the message ready to send.")).toBeInTheDocument();
+    expect(await screen.findByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(send).toHaveBeenCalledTimes(1);
+    const [service, template, params, opts] = send.mock.calls[0]!;
+    expect(service).toBe("service_v6ww0nd");
+    expect(template).toBe("template_6qada6a");
+    expect(opts).toEqual({ publicKey: "-KyudM2OVSLzT42ZY" });
+    expect(params).toMatchObject({ name: "Asha Verma", email: "asha@example.com", subject: "HRBP role", message: "Hello Remee" });
   });
 });
