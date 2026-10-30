@@ -37,19 +37,30 @@ type Errors = Partial<Record<Field, string>>;
 
 const EMPTY = { fullName: "", email: "", subject: "", message: "" };
 
+// EmailJS public key is a publishable browser key by design.
+const EMAILJS = {
+  serviceId: "service_v6ww0nd",
+  templateId: "template_6qada6a",
+  publicKey: "-KyudM2OVSLzT42ZY",
+};
+
+type Status = "idle" | "sending" | "sent" | "error";
+
 export function ContactForm() {
   const [values, setValues] = useState(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const sent = status === "sent";
 
   const update = (field: Field) => (value: string) => {
     setValues((prev) => ({ ...prev, [field]: value }));
     setErrors((prev) => ({ ...prev, [field]: undefined }));
-    setSent(false);
+    if (status !== "sending") setStatus("idle");
   };
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (status === "sending") return;
     const result = contactSchema.safeParse(values);
     if (!result.success) {
       const next: Errors = {};
@@ -58,14 +69,37 @@ export function ContactForm() {
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
-      setSent(false);
+      setStatus("idle");
       return;
     }
     setErrors({});
-    const body = `${result.data.message}\n\n— ${result.data.fullName}\n${result.data.email}`;
-    const href = `mailto:${EMAIL}?subject=${encodeURIComponent(result.data.subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
-    setSent(true);
+    setStatus("sending");
+    const d = result.data;
+    try {
+      const emailjs = (await import("@emailjs/browser")).default;
+      await emailjs.send(
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
+        {
+          name: d.fullName,
+          from_name: d.fullName,
+          email: d.email,
+          from_email: d.email,
+          reply_to: d.email,
+          subject: d.subject,
+          title: d.subject,
+          message: d.message,
+          to_email: EMAIL,
+          time: new Date().toLocaleString(),
+        },
+        { publicKey: EMAILJS.publicKey },
+      );
+      setValues(EMPTY);
+      setStatus("sent");
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setStatus("error");
+    }
   }
 
   const fields: {
@@ -139,14 +173,24 @@ export function ContactForm() {
       </div>
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Button type="submit" size="lg" className="group h-12 gap-3 rounded-full px-7">
-          Send Message
+        <Button
+          type="submit"
+          size="lg"
+          disabled={status === "sending"}
+          className="group h-12 gap-3 rounded-full px-7"
+        >
+          {status === "sending" ? "Sending…" : "Send Message"}
           <SendHorizontal className="transition-transform group-hover:translate-x-0.5" />
         </Button>
-        <p aria-live="polite" className="text-xs text-muted-foreground">
+        <p
+          aria-live="polite"
+          className={`text-xs ${status === "error" ? "text-destructive" : "text-muted-foreground"}`}
+        >
           {sent
-            ? "Your email app has opened with the message ready to send."
-            : "This opens your email app with the message ready to send."}
+            ? "Thank you — your message has been sent. I'll reply soon."
+            : status === "error"
+              ? `Sorry, the message couldn't be sent. Please email me at ${EMAIL}.`
+              : "I usually reply by email."}
         </p>
       </div>
     </form>
