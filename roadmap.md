@@ -1,3 +1,5 @@
 - [x] Add the user's real profile photograph to the home hero portrait card.
 - [x] Modernize home-page experience highlights, career roadmap, quote, and contact invitation without changing content.
 - [x] Verify section layouts and their destination links on desktop and mobile.
+- [x] Make the three contact cards clickable (email app, LinkedIn in a new tab, Google Maps) and add a validated contact form below them.
+- [ ] Connect EmailJS so the contact form sends directly instead of opening the visitor's email app — waiting on Remee's EmailJS account, service ID, template ID and public key.
