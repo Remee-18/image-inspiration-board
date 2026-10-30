@@ -95,7 +95,7 @@ export function ContactForm() {
     >
       <div className="grid gap-5 md:grid-cols-2">
         {fields.map((field) => (
-          <div key={field.name} className="space-y-2">
+          <div key={field.name} className={`space-y-2 ${field.full ? "md:col-span-2" : ""}`}>
             <Label htmlFor={field.name}>{field.label}</Label>
             <Input
               id={field.name}
