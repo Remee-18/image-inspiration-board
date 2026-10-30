@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, GraduationCap, MapPin, Quote } from "lucide-react";
 import { useRef, type PointerEvent } from "react";
+import portrait from "@/assets/remee-portrait.jpg.asset.json";
 
 const TICKER = [
   "Talent Acquisition",
@@ -135,21 +136,18 @@ export function Hero() {
           />
           <div className="relative rounded-[2.4rem] bg-gradient-to-b from-primary-foreground/35 via-primary-foreground/10 to-transparent p-px">
             <div className="tilt relative aspect-[4/5] overflow-hidden rounded-[calc(2.4rem-1px)] bg-beige">
+              <img
+                src={portrait.url}
+                alt="Remee, MBA student in HR and Marketing at IILM University"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+                loading="eager"
+                decoding="async"
+              />
               <div
                 aria-hidden
-                className="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_0%,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]"
+                className="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_0%,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_70%)]"
               />
-              <div className="relative grid h-full place-items-center text-center text-primary">
-                <div aria-hidden className="pointer-events-none absolute inset-4 rounded-[1.7rem] border border-dashed border-gold/45" />
-                <div className="px-6">
-                  <span className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gold/40 bg-card/70 shadow-sm">
-                    <span className="font-display text-6xl leading-none">R</span>
-                  </span>
-                  <p className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-muted-foreground">
-                    Profile photo placeholder
-                  </p>
-                </div>
-              </div>
+              <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/40 via-primary/10 to-transparent" />
 
               <div aria-hidden className="sweep absolute inset-y-0 -left-1/2 w-1/2 opacity-30" />
             </div>

@@ -1,2 +1,3 @@
+- [x] Add the user's real profile photograph to the home hero portrait card.
 - [x] Modernize home-page experience highlights, career roadmap, quote, and contact invitation without changing content.
 - [x] Verify section layouts and their destination links on desktop and mobile.
