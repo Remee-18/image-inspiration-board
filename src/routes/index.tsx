@@ -5,7 +5,12 @@ import { Hero } from "@/components/hero";
 import { CareerRoadmap, ExperienceHighlights, HomeInvitation, PersonalQuote } from "@/components/home-sections";
 
 export const Route = createFileRoute("/")({
-  head: () => meta("Remee — Aspiring HR Professional | Talent Acquisition & HRBP", "MBA (HR & Marketing) student at IILM University with an Airtel HRBP internship and recruitment leadership experience."),
+  head: () =>
+    meta(
+      "Remee — Aspiring HR Professional | Talent Acquisition & HRBP",
+      "MBA (HR & Marketing) student at IILM University with an Airtel HRBP internship and recruitment leadership experience.",
+      "https://i.postimg.cc/W3xG6KsX/Remee-Photograph.jpg",
+    ),
   component: Index,
 });
 
