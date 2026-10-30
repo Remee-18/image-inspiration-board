@@ -47,7 +47,7 @@ describe("Contact form validation", () => {
 
     expect(screen.queryByText("Please enter a valid email address.")).toBeNull();
     expect(setHref).toHaveBeenCalledTimes(1);
-    const href = setHref.mock.calls[0][0] as string;
+    const href = String(setHref.mock.calls[0]?.[0]);
     expect(href).toContain("mailto:rajremee2000@gmail.com");
     expect(href).toContain("subject=HRBP%20role");
     expect(href).toContain("Hello%20Remee");
