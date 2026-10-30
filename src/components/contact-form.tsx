@@ -74,6 +74,7 @@ export function ContactForm() {
     type?: string;
     placeholder: string;
     autoComplete?: string;
+    full?: boolean;
   }[] = [
     { name: "fullName", label: "Full Name", placeholder: "Your name", autoComplete: "name" },
     {
@@ -83,7 +84,7 @@ export function ContactForm() {
       placeholder: "you@example.com",
       autoComplete: "email",
     },
-    { name: "subject", label: "Subject", placeholder: "What's this about?" },
+    { name: "subject", label: "Subject", placeholder: "What's this about?", full: true },
   ];
 
   return (
