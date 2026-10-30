@@ -121,7 +121,7 @@ export function CTA() {
   );
 }
 
-export function meta(title: string, description: string) {
+export function meta(title: string, description: string, image?: string) {
   return {
     meta: [
       { title },
@@ -130,6 +130,12 @@ export function meta(title: string, description: string) {
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      ...(image
+        ? [
+            { property: "og:image", content: image },
+            { name: "twitter:image", content: image },
+          ]
+        : []),
     ],
   };
 }
