@@ -43,6 +43,11 @@ describe("Contact form validation", () => {
     expect(service).toBe("service_v6ww0nd");
     expect(template).toBe("template_6qada6a");
     expect(opts).toEqual({ publicKey: "-KyudM2OVSLzT42ZY" });
-    expect(params).toMatchObject({ name: "Asha Verma", email: "asha@example.com", subject: "HRBP role", message: "Hello Remee" });
+    expect(params).toEqual({
+      name: "Asha Verma",
+      email: "asha@example.com",
+      subject: "HRBP role",
+      message: "Hello Remee",
+    });
   });
 });

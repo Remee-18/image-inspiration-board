@@ -77,20 +77,15 @@ export function ContactForm() {
     const d = result.data;
     try {
       const emailjs = (await import("@emailjs/browser")).default;
+      // These four parameter names must match the template variables exactly.
       await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
         {
           name: d.fullName,
-          from_name: d.fullName,
           email: d.email,
-          from_email: d.email,
-          reply_to: d.email,
           subject: d.subject,
-          title: d.subject,
           message: d.message,
-          to_email: EMAIL,
-          time: new Date().toLocaleString(),
         },
         { publicKey: EMAILJS.publicKey },
       );
