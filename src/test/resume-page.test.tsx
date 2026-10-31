@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 
-import resumeAsset from "@/assets/Remee_Resume.pdf.asset.json";
 import { ResumePanel } from "@/components/resume-panel";
 import {
   RESUME_FILENAME,
@@ -25,9 +26,12 @@ describe("Resume page", () => {
   });
 
   it("points both actions at the uploaded PDF, not a placeholder", () => {
-    expect(RESUME_URL).toBe(resumeAsset.url);
-    expect(RESUME_URL).toMatch(/\/Remee_Resume\.pdf$/);
-    expect(resumeAsset.content_type).toBe("application/pdf");
+    expect(RESUME_URL).toBe("/resume/Remee_Resume.pdf");
+    const original = readFileSync(`public${RESUME_URL}`);
+    expect(original.subarray(0, 5).toString()).toBe("%PDF-");
+    expect(createHash("sha256").update(original).digest("hex")).toBe(
+      "ea95121c58cb57126a7bca17ad71964b31ee0b7ac7d1d2925003e40711fed3f6",
+    );
   });
 
   it("opens the PDF in a new tab", () => {

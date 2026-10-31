@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import resume from "@/assets/Remee_Resume.pdf.asset.json";
 import { ResumePanel } from "@/components/resume-panel";
 import { PageHero, Section, meta } from "@/components/site";
 
-export const RESUME_URL = resume.url;
+export const RESUME_URL = "/resume/Remee_Resume.pdf";
 export const RESUME_FILENAME = "Remee_Resume.pdf";
 export const RESUME_HEADING = "My Resume";
 export const RESUME_INTRO =
