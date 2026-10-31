@@ -5,4 +5,4 @@
 - [x] Connect EmailJS so the contact form sends directly instead of opening the visitor's email app.
 - [x] Send exactly the template's variable names (name, email, subject, message) and confirm a real send from the live site.
 - [x] Publish the uploaded one-page resume PDF as a public asset and wire the Resume page's View (new tab) and Download (original file) buttons; verify both on desktop and phone.
-- [ ] Replace the resume asset-service URL with a permanent public-folder PDF path and verify opening and downloading the unchanged file.
+- [x] Replace the resume asset-service URL with a permanent public-folder PDF path and verify opening and downloading the unchanged file.
