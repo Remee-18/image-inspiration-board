@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Card, CTA, PageHero, Placeholder, Section, meta } from "@/components/site";
+import { AcademicExperience } from "@/components/academic-sections";
+import { academicExperiences } from "@/lib/academic-content";
 
 export const Route = createFileRoute("/experience")({
-  head: () => meta("Experience — Remee | Airtel HRBP Intern & HR Leadership", "HRBP internship at Bharti Airtel and recruitment leadership at IILM University Incubation Lab."),
+  head: () => meta("Experience — Remee | HR, Academic & Community Learning", "Airtel HRBP internship, campus leadership, academic immersion at IIM Sirmaur and rural community engagement through DTEM."),
   component: Experience,
 });
 
@@ -50,6 +52,7 @@ function Experience() {
       <Section eyebrow="Reflection" title="What these roles taught me">
         <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-muted-foreground">Coordinating training showed me how much good HR depends on accuracy and follow-through. Recruiting for the Incubation Lab taught me to listen carefully and judge fit beyond a resume. I'm still developing these skills — and they're why I want to grow in Talent Acquisition and HR Business Partnering.</p>
       </Section>
+      {academicExperiences.map((story, index) => <AcademicExperience key={story.title} story={story} index={index} />)}
       <CTA />
     </>
   );
