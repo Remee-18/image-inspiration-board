@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CTA, PageHero, Placeholder, Section, meta } from "@/components/site";
+import { CafeCaseStudy } from "@/components/academic-sections";
+import { cafeCaseStudy } from "@/lib/academic-content";
 
 export const Route = createFileRoute("/projects")({
-  head: () => meta("Projects — Remee | HR & Marketing Portfolio", "Airtel capability-building support, BellaVita branding concept and Tretelle baking app concept."),
+  head: () => meta("Projects — Remee | HR & Business Case Studies", "Airtel capability-building support, BellaVita and Tretelle concepts, and Cafe NIFRAAM field research and business recommendations."),
   component: Projects,
 });
 
@@ -59,6 +61,7 @@ function Projects() {
           </div>
         </Section>
       ))}
+      <CafeCaseStudy study={cafeCaseStudy} />
       <CTA />
     </>
   );
