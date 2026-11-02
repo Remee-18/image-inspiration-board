@@ -15,4 +15,5 @@
 - The resume page's file actions live in the presentation-only `src/components/resume-panel.tsx` (plain anchors, no router imports), with copy and the PDF location supplied by the `/resume` route; the panel stays renderable on its own. Why: keeps the resume page testable and consistent with the other presentation-only components.
 - Serve the original resume PDF from `public/resume/Remee_Resume.pdf` via the same-origin `/resume/Remee_Resume.pdf` path. Why: direct public-file navigation avoids the asset-service path and supports native browser downloads without temporary URLs or embedded viewers.
 - Academic experience and case-study content lives in `src/lib/academic-content.ts`, rendered by presentation-only `src/components/academic-sections.tsx` inside the existing routes. Why: keeps content separate from reusable editorial layouts and limits changes to Experience and Projects.
+- Internship photographs are supplied by the Experience route to the presentation-only `InternshipGallery`, using asset pointers and an accessible full-image dialog. Why: keeps photo content separate from gallery interaction and preserves uncropped originals.
 

@@ -10,3 +10,4 @@
 - [x] Add the Cafe NIFRAAM case study within Projects with carefully attributed follower growth.
 - [x] Add three labelled photo galleries and verify desktop, tablet, mobile, navigation, contact and resume regressions.
 - [x] Re-check the re-uploaded resume PDF against public/resume/Remee_Resume.pdf (identical checksum), confirm /resume/Remee_Resume.pdf serves it, and re-test View and Download on desktop and phone.
+- [x] Add all five original Airtel internship images to the existing section and verify the gallery and enlarged viewer on desktop and mobile.
