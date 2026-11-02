@@ -8,6 +8,10 @@ import workspace from "@/assets/airtel-workspace.jpeg.asset.json";
 import program from "@/assets/airtel-dtc-pathshala.jpeg.asset.json";
 import office from "@/assets/airtel-office.jpeg.asset.json";
 import training from "@/assets/airtel-virtual-training.jpeg.asset.json";
+import iimGroup from "@/assets/iim-sirmaur-group-photo.jpeg.asset.json";
+import iimLectureHall from "@/assets/iim-sirmaur-lecture-hall.jpeg.asset.json";
+import iimCertificate from "@/assets/iim-sirmaur-certificate.jpeg.asset.json";
+
 
 export const Route = createFileRoute("/experience")({
   head: () => meta("Experience — Remee | HR, Academic & Community Learning", "Airtel HRBP internship, campus leadership, academic immersion at IIM Sirmaur and rural community engagement through DTEM."),
