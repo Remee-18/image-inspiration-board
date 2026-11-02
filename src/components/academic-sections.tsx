@@ -32,7 +32,7 @@ export function ExperienceGallery({ title }: { title: string }) {
   );
 }
 
-export function AcademicExperience({ story, index }: { story: ExperienceStory; index: number }) {
+export function AcademicExperience({ story, index, photos }: { story: ExperienceStory; index: number; photos?: InternshipPhoto[] }) {
   return (
     <section className={index % 2 === 0 ? "border-t bg-beige/45" : "border-t bg-background"}>
       <article className="mx-auto max-w-6xl px-5 py-16 md:py-20">
@@ -70,7 +70,10 @@ export function AcademicExperience({ story, index }: { story: ExperienceStory; i
           </div>
         </div>
         {story.culturalNote && <aside className="mt-6 max-w-3xl"><h4 className="text-sm font-semibold text-primary">Cultural Experience</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{story.culturalNote}</p></aside>}
-        <ExperienceGallery title={story.gallery} />
+        {photos && photos.length > 0
+          ? <InternshipGallery title={story.gallery} photos={photos} photoClassName={STORY_PHOTO_CLASS} />
+          : <ExperienceGallery title={story.gallery} />}
+
       </article>
     </section>
   );
