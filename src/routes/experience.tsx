@@ -40,6 +40,17 @@ const internshipPhotos: InternshipPhoto[] = [
   { src: office.url, caption: "Airtel office environment", alt: "Open-plan Airtel office with desks and JEET KI ORE decorations" },
 ];
 
+export const iimSirmaurPhotos: InternshipPhoto[] = [
+  { src: iimGroup.url, caption: "Programme group photograph in the IIM Sirmaur lecture hall", alt: "Students and faculty of the Management Immersion Programme posing in a tiered lecture hall beneath an Indian Institute of Management Sirmaur welcome banner" },
+  { src: iimLectureHall.url, caption: "IIM Sirmaur lecture hall with name placard and programme kit", alt: "Tiered IIM Sirmaur lecture hall with a desk name placard reading Remee, an IIM Sirmaur water bottle and jute tote bag on the desk" },
+  { src: iimCertificate.url, caption: "Certificate of participation · Management Immersion Programme for MBA Students", alt: "Indian Institute of Management Sirmaur certificate certifying that Remee from IILM University, Greater Noida participated in the Management Immersion Programme for MBA Students Batch II" },
+];
+
+const photosByStory: Record<string, InternshipPhoto[]> = {
+  "IIM Sirmaur Academic Immersion": iimSirmaurPhotos,
+};
+
+
 function Experience() {
   return (
     <>
