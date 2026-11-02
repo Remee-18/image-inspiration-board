@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import type { ExperienceStory, cafeCaseStudy } from "@/lib/academic-content";
+import { InternshipGallery, type InternshipPhoto } from "@/components/internship-gallery";
+
+const STORY_PHOTO_CLASS = "h-[280px] sm:h-[320px] lg:h-[380px]";
+
 
 function LearningList({ items }: { items: string[] }) {
   return (
