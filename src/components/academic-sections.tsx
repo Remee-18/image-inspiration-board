@@ -73,8 +73,8 @@ export function AcademicExperience({ story, index, photos }: { story: Experience
         {photos && photos.length > 0
           ? <InternshipGallery title={story.gallery} photos={photos} photoClassName={STORY_PHOTO_CLASS} />
           : <ExperienceGallery title={story.gallery} />}
-
       </article>
+
     </section>
   );
 }
