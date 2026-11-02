@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import type { ExperienceStory, cafeCaseStudy } from "@/lib/academic-content";
+import { InternshipGallery, type InternshipPhoto } from "@/components/internship-gallery";
+
+const STORY_PHOTO_CLASS = "h-[280px] sm:h-[320px] lg:h-[380px]";
+
 
 function LearningList({ items }: { items: string[] }) {
   return (
@@ -28,7 +32,7 @@ export function ExperienceGallery({ title }: { title: string }) {
   );
 }
 
-export function AcademicExperience({ story, index }: { story: ExperienceStory; index: number }) {
+export function AcademicExperience({ story, index, photos }: { story: ExperienceStory; index: number; photos?: InternshipPhoto[] | undefined }) {
   return (
     <section className={index % 2 === 0 ? "border-t bg-beige/45" : "border-t bg-background"}>
       <article className="mx-auto max-w-6xl px-5 py-16 md:py-20">
@@ -66,8 +70,11 @@ export function AcademicExperience({ story, index }: { story: ExperienceStory; i
           </div>
         </div>
         {story.culturalNote && <aside className="mt-6 max-w-3xl"><h4 className="text-sm font-semibold text-primary">Cultural Experience</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{story.culturalNote}</p></aside>}
-        <ExperienceGallery title={story.gallery} />
+        {photos && photos.length > 0
+          ? <InternshipGallery title={story.gallery} photos={photos} photoClassName={STORY_PHOTO_CLASS} />
+          : <ExperienceGallery title={story.gallery} />}
       </article>
+
     </section>
   );
 }
