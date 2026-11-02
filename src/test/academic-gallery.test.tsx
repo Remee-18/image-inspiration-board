@@ -51,7 +51,7 @@ describe("IIM Sirmaur photograph gallery", () => {
 
   it("leaves the rural community visit gallery as labelled placeholders", () => {
     render(<AcademicExperience story={ruralStory} index={1} />);
-    expect(screen.getByText(/photo placeholder/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/photo placeholder/i)).toHaveLength(3);
     expect(screen.queryByRole("dialog")).toBeNull();
   });
 });
