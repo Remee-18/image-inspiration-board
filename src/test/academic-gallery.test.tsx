@@ -10,6 +10,8 @@ import certificate from "@/assets/iim-sirmaur-certificate.jpeg.asset.json";
 
 const iimStory = academicExperiences.find((story) => story.gallery === "IIM Sirmaur Academic Immersion")!;
 const ruralStory = academicExperiences.find((story) => story.gallery === "Rural Community Visit")!;
+const firstPhoto = iimSirmaurPhotos[0]!;
+
 
 function renderIim() {
   return render(<AcademicExperience story={iimStory} index={0} photos={iimSirmaurPhotos} />);
@@ -43,9 +45,10 @@ describe("IIM Sirmaur photograph gallery", () => {
 
   it("opens a larger view of the clicked photograph", () => {
     renderIim();
-    fireEvent.click(screen.getByRole("button", { name: `View ${iimSirmaurPhotos[0].caption}` }));
+    fireEvent.click(screen.getByRole("button", { name: `View ${firstPhoto.caption}` }));
     const enlarged = screen.getByRole("dialog").querySelector("img")!;
-    expect(enlarged.getAttribute("src")).toBe(iimSirmaurPhotos[0].src);
+    expect(enlarged.getAttribute("src")).toBe(firstPhoto.src);
+
     expect(screen.getByText(`1 / ${iimSirmaurPhotos.length}`)).toBeInTheDocument();
   });
 

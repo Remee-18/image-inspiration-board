@@ -66,7 +66,7 @@ function Experience() {
             </ul>
           </div>
         </div>
-        <InternshipGallery photos={internshipPhotos} />
+        <InternshipGallery title="Airtel Internship" photos={internshipPhotos} />
       </Section>
       <Section tone="beige" eyebrow="Leadership" title="Leading people and events">
         <div className="grid gap-6 md:grid-cols-2">

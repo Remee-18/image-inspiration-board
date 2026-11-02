@@ -32,7 +32,7 @@ export function ExperienceGallery({ title }: { title: string }) {
   );
 }
 
-export function AcademicExperience({ story, index, photos }: { story: ExperienceStory; index: number; photos?: InternshipPhoto[] }) {
+export function AcademicExperience({ story, index, photos }: { story: ExperienceStory; index: number; photos?: InternshipPhoto[] | undefined }) {
   return (
     <section className={index % 2 === 0 ? "border-t bg-beige/45" : "border-t bg-background"}>
       <article className="mx-auto max-w-6xl px-5 py-16 md:py-20">
