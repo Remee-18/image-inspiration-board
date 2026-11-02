@@ -1,7 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Card, CTA, PageHero, Placeholder, Section, meta } from "@/components/site";
+import { Card, CTA, PageHero, Section, meta } from "@/components/site";
 import { AcademicExperience } from "@/components/academic-sections";
 import { academicExperiences } from "@/lib/academic-content";
+import { InternshipGallery, type InternshipPhoto } from "@/components/internship-gallery";
+import portrait from "@/assets/airtel-internship-portrait.jpeg.asset.json";
+import workspace from "@/assets/airtel-workspace.jpeg.asset.json";
+import program from "@/assets/airtel-dtc-pathshala.jpeg.asset.json";
+import office from "@/assets/airtel-office.jpeg.asset.json";
+import training from "@/assets/airtel-virtual-training.jpeg.asset.json";
 
 export const Route = createFileRoute("/experience")({
   head: () => meta("Experience — Remee | HR, Academic & Community Learning", "Airtel HRBP internship, campus leadership, academic immersion at IIM Sirmaur and rural community engagement through DTEM."),
@@ -22,12 +28,20 @@ const leadership = [
   ["Event Anchor", "IILM University", "Anchored five university events for audiences of 300+."],
 ];
 
+const internshipPhotos: InternshipPhoto[] = [
+  { src: portrait.url, caption: "At Bharti Airtel", alt: "Remee standing at the Airtel reception with the original Airtel logo behind her" },
+  { src: program.url, caption: "JEET KI ORE · DTC ki Pathshala", alt: "Original Airtel DTC capability-building program poster featuring virtual training highlights" },
+  { src: training.url, caption: "Virtual DTC training · Microsoft Teams", alt: "DTC virtual training screenshot with a network presentation and participants in Microsoft Teams" },
+  { src: workspace.url, caption: "Internship workspace", alt: "Laptop, Airtel notebook and pen at Remee's internship workspace" },
+  { src: office.url, caption: "Airtel office environment", alt: "Open-plan Airtel office with desks and JEET KI ORE decorations" },
+];
+
 function Experience() {
   return (
     <>
       <PageHero eyebrow="Experience" title="Learning by doing, across corporate and campus." />
       <Section>
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
+        <div className="max-w-4xl">
           <div>
             <p className="eyebrow">May – July 2026</p>
             <h2 className="mt-2 text-3xl text-primary">HRBP Intern · Bharti Airtel</h2>
@@ -36,11 +50,8 @@ function Experience() {
               {airtel.map((a) => <li key={a} className="flex gap-3"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold" />{a}</li>)}
             </ul>
           </div>
-          <div className="space-y-4">
-            <Placeholder label="approved, redacted Airtel internship screenshot" />
-            <p className="text-xs text-muted-foreground">No confidential employee information or unapproved internal materials are shown.</p>
-          </div>
         </div>
+        <InternshipGallery photos={internshipPhotos} />
       </Section>
       <Section tone="beige" eyebrow="Leadership" title="Leading people and events">
         <div className="grid gap-6 md:grid-cols-2">
