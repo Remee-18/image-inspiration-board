@@ -11,6 +11,8 @@ import training from "@/assets/airtel-virtual-training.jpeg.asset.json";
 import iimGroup from "@/assets/iim-sirmaur-group-photo.jpeg.asset.json";
 import iimLectureHall from "@/assets/iim-sirmaur-lecture-hall.jpeg.asset.json";
 import iimCertificate from "@/assets/iim-sirmaur-certificate.jpeg.asset.json";
+import ruralDrive from "@/assets/rural-community-visit-donation-drive.jpeg.asset.json";
+import ruralClothes from "@/assets/rural-community-visit-clothes-distribution.jpg.asset.json";
 
 
 export const Route = createFileRoute("/experience")({
@@ -46,8 +48,14 @@ export const iimSirmaurPhotos: InternshipPhoto[] = [
   { src: iimCertificate.url, caption: "Certificate of participation · Management Immersion Programme for MBA Students", alt: "Indian Institute of Management Sirmaur certificate certifying that Remee from IILM University, Greater Noida participated in the Management Immersion Programme for MBA Students Batch II" },
 ];
 
+export const ruralCommunityPhotos: InternshipPhoto[] = [
+  { src: ruralDrive.url, caption: "Donation drive · students and community children with the “Joy of Giving” banner", alt: "Group of IILM University students and several young children standing outdoors in front of weathered metal walls, holding a white banner reading Donation Drive, Small Act Their Big Joy, with an IILM logo and a Joy of Giving emblem" },
+  { src: ruralClothes.url, caption: "Clothes handed over from the “Joy of Giving” box", alt: "Students lifting folded white and grey garments from a decorated cardboard box labelled Joy of Giving while community members, including a small child, stand nearby" },
+];
+
 const photosByStory: Record<string, InternshipPhoto[]> = {
   "IIM Sirmaur Academic Immersion": iimSirmaurPhotos,
+  "Rural Community Visit": ruralCommunityPhotos,
 };
 
 function Experience() {
