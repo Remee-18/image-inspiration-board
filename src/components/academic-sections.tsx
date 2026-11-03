@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { ExperienceStory, cafeCaseStudy } from "@/lib/academic-content";
 import { InternshipGallery, type InternshipPhoto } from "@/components/internship-gallery";
 
-const STORY_PHOTO_CLASS = "h-[280px] sm:h-[320px] lg:h-[380px]";
+const STORY_PHOTO_CLASS = "h-[280px] sm:h-[320px] lg:h-[380px] object-contain";
 
 
 function LearningList({ items }: { items: string[] }) {
@@ -32,7 +32,7 @@ export function ExperienceGallery({ title }: { title: string }) {
   );
 }
 
-export function AcademicExperience({ story, index, photos }: { story: ExperienceStory; index: number; photos?: InternshipPhoto[] | undefined }) {
+export function AcademicExperience({ story, index, photos, photoClassName = STORY_PHOTO_CLASS }: { story: ExperienceStory; index: number; photos?: InternshipPhoto[] | undefined; photoClassName?: string }) {
   return (
     <section className={index % 2 === 0 ? "border-t bg-beige/45" : "border-t bg-background"}>
       <article className="mx-auto max-w-6xl px-5 py-16 md:py-20">
@@ -71,7 +71,7 @@ export function AcademicExperience({ story, index, photos }: { story: Experience
         </div>
         {story.culturalNote && <aside className="mt-6 max-w-3xl"><h4 className="text-sm font-semibold text-primary">Cultural Experience</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{story.culturalNote}</p></aside>}
         {photos && photos.length > 0
-          ? <InternshipGallery title={story.gallery} photos={photos} photoClassName={STORY_PHOTO_CLASS} />
+          ? <InternshipGallery title={story.gallery} photos={photos} photoClassName={photoClassName} />
           : <ExperienceGallery title={story.gallery} />}
       </article>
 

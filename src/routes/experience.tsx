@@ -58,6 +58,11 @@ const photosByStory: Record<string, InternshipPhoto[]> = {
   "Rural Community Visit": ruralCommunityPhotos,
 };
 
+// Both rural photographs share the same landscape shape, so their tiles match it exactly.
+const photoClassByStory: Record<string, string> = {
+  "Rural Community Visit": "aspect-[4/3] object-cover",
+};
+
 function Experience() {
 
   return (
@@ -86,7 +91,7 @@ function Experience() {
       <Section eyebrow="Reflection" title="What these roles taught me">
         <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-muted-foreground">Coordinating training showed me how much good HR depends on accuracy and follow-through. Recruiting for the Incubation Lab taught me to listen carefully and judge fit beyond a resume. I'm still developing these skills — and they're why I want to grow in Talent Acquisition and HR Business Partnering.</p>
       </Section>
-      {academicExperiences.map((story, index) => <AcademicExperience key={story.title} story={story} index={index} photos={photosByStory[story.gallery]} />)}
+      {academicExperiences.map((story, index) => <AcademicExperience key={story.title} story={story} index={index} photos={photosByStory[story.gallery]} photoClassName={photoClassByStory[story.gallery]} />)}
       <CTA />
     </>
   );
