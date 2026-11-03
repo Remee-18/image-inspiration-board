@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export type InternshipPhoto = { src: string; caption: string; alt: string };
 
-const DEFAULT_PHOTO_CLASS = "aspect-[4/3] transition-transform duration-300 motion-safe:group-hover:scale-[1.02]";
+const DEFAULT_PHOTO_CLASS = "aspect-[4/3] object-contain transition-transform duration-300 motion-safe:group-hover:scale-[1.02]";
 
 export function InternshipGallery({
   title,
@@ -26,11 +26,11 @@ export function InternshipGallery({
   return (
     <div className="mt-10 border-t pt-8">
       <h3 className="text-2xl text-primary">{title} · Photographs</h3>
-      <div className="mt-5 grid gap-x-5 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={`mt-5 grid gap-x-5 gap-y-7 sm:grid-cols-2 ${photos.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
         {photos.map((photo, index) => (
           <figure key={photo.src} className="min-w-0">
             <Button variant="ghost" onClick={() => setSelected(index)} aria-label={`View ${photo.caption}`} className="group relative block h-auto w-full overflow-hidden rounded-lg border bg-muted p-0 hover:bg-muted">
-              <img src={photo.src} alt={photo.alt} loading="lazy" className={`w-full object-contain ${photoClassName}`} />
+              <img src={photo.src} alt={photo.alt} loading="lazy" className={`w-full ${photoClassName}`} />
               <span className="absolute bottom-3 right-3 rounded-md bg-primary p-2 text-primary-foreground transition-opacity group-hover:opacity-100"><Expand aria-hidden="true" /></span>
             </Button>
             <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">{photo.caption}</figcaption>
