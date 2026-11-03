@@ -88,7 +88,7 @@ function CaseChapter({ number, title, children }: { number: string; title: strin
   );
 }
 
-export function CafeCaseStudy({ study }: { study: typeof cafeCaseStudy }) {
+export function CafeCaseStudy({ study, photos }: { study: typeof cafeCaseStudy; photos?: InternshipPhoto[] | undefined }) {
   return (
     <section className="border-t bg-beige/45">
       <article className="mx-auto max-w-6xl px-5 py-16 md:py-20">
@@ -122,7 +122,9 @@ export function CafeCaseStudy({ study }: { study: typeof cafeCaseStudy }) {
           </CaseChapter>
           <CaseChapter number="07" title="Key Learning"><div className="max-w-3xl"><LearningList items={study.learning} /></div></CaseChapter>
         </div>
-        <ExperienceGallery title="Cafe NIFRAAM Case Study" />
+        {photos && photos.length > 0
+          ? <InternshipGallery title="Cafe NIFRAAM Case Study" photos={photos} photoClassName={STORY_PHOTO_CLASS} />
+          : <ExperienceGallery title="Cafe NIFRAAM Case Study" />}
       </article>
     </section>
   );
