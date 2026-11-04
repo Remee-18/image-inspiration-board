@@ -15,4 +15,5 @@
 - [x] Add the two uploaded Rural Community Visit photographs to the existing section as a two-image gallery with click-to-enlarge, and verify desktop and phone.
 - [x] Add the six uploaded photographs to the Projects page (Airtel reception, BellaVita brand board, Tretelle logo, three Cafe NIFRAAM photos) with click-to-enlarge, and verify desktop and phone.
 - [x] Replace the Tretelle image with the privacy-edited logo (blurred phone number) and replace the project description with the sister's-business personal-initiative text; verify desktop and phone.
+- [x] Update About Me with the original uploaded portrait and supplied introduction/Career Interests; preserve all education and verify desktop/mobile.
 
