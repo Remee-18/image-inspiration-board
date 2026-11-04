@@ -7,7 +7,7 @@ import { cafeCaseStudy } from "@/lib/academic-content";
 import { cafeNifraamPhotos } from "@/routes/projects";
 import airtelReception from "@/assets/airtel-reception-dtc.jpeg.asset.json";
 import bellavitaBoard from "@/assets/bellavita-brand-identity-board.jpeg.asset.json";
-import tretelleLogo from "@/assets/tretelle-instagram-logo.jpeg.asset.json";
+import tretelleLogo from "@/assets/tretelle-homemade-bakes-logo.png.asset.json";
 
 const dtcPhoto = {
   src: airtelReception.url,
@@ -31,6 +31,18 @@ describe("Project card photographs", () => {
 
   it("keeps each project's photograph distinct", () => {
     expect(new Set([airtelReception.url, bellavitaBoard.url, tretelleLogo.url]).size).toBe(3);
+  });
+});
+
+describe("Tretelle project", () => {
+  it("uses the privacy-edited logo and the updated description", () => {
+    render(<ProjectPhoto photo={{
+      src: tretelleLogo.url,
+      caption: "Tretelle logo — homemade bakes and sweet treats by Suman Srivastava",
+      alt: "Circular sage green and cream Tretelle logo for homemade bakes and sweet treats with the Instagram handle @treatelle_by_suman",
+    }} />);
+    expect(screen.getByRole("img").getAttribute("src")).toBe(tretelleLogo.url);
+    expect(tretelleLogo.url).toContain("tretelle-homemade-bakes-logo.png");
   });
 });
 
