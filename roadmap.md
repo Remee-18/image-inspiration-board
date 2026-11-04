@@ -13,4 +13,5 @@
 - [x] Add all five original Airtel internship images to the existing section and verify the gallery and enlarged viewer on desktop and mobile.
 - [x] Add the three uploaded IIM Sirmaur photographs to the existing IIM Sirmaur section as one gallery with click-to-enlarge, and verify desktop and phone.
 - [x] Add the two uploaded Rural Community Visit photographs to the existing section as a two-image gallery with click-to-enlarge, and verify desktop and phone.
+- [x] Add the six uploaded photographs to the Projects page (Airtel reception, BellaVita brand board, Tretelle logo, three Cafe NIFRAAM photos) with click-to-enlarge, and verify desktop and phone.
 
