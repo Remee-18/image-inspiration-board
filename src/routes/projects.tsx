@@ -6,7 +6,7 @@ import type { InternshipPhoto } from "@/components/internship-gallery";
 import { cafeCaseStudy } from "@/lib/academic-content";
 import airtelReception from "@/assets/airtel-reception-dtc.jpeg.asset.json";
 import bellavitaBoard from "@/assets/bellavita-brand-identity-board.jpeg.asset.json";
-import tretelleLogo from "@/assets/tretelle-instagram-logo.jpeg.asset.json";
+import tretelleLogo from "@/assets/tretelle-homemade-bakes-logo.png.asset.json";
 import cafeExterior from "@/assets/cafe-nifraam-exterior-night.webp.asset.json";
 import cafePoster from "@/assets/cafe-nifraam-journey-poster.webp.asset.json";
 import cafeInterior from "@/assets/cafe-nifraam-interior-seating.jpg.asset.json";
@@ -34,7 +34,7 @@ export const cafeNifraamPhotos: InternshipPhoto[] = [
   },
 ];
 
-const projects: { tag: string; title: string; context: string; role: string; outcome: string; skills: string[]; photo: InternshipPhoto }[] = [
+const projects: { tag: string; title: string; context: string; role?: string; contributions?: string[]; outcome: string; skills: string[]; photo: InternshipPhoto }[] = [
   {
     tag: "Internship · Airtel",
     title: "DTC Capability-Building Programme",
@@ -62,16 +62,21 @@ const projects: { tag: string; title: string; context: string; role: string; out
     },
   },
   {
-    tag: "Business concept",
-    title: "Tretelle Homemade Baking App",
-    context: "A concept built around my sister's homemade cakes, muffins and chocolates business.",
-    role: "Proposed an app idea for ordering and showcasing products, and supported Instagram visuals. The app is a proposal, not a live product.",
-    outcome: "Learned to connect customer needs with a simple digital experience for a small business.",
-    skills: ["Digital Marketing", "Concept Design", "Social Media"],
+    tag: "Personal initiative",
+    title: "Tretelle – Supporting a Homemade Baking Business",
+    context: "Tretelle is my sister's homemade baking business, offering cakes, muffins and chocolates. As the business began taking its first steps online, I saw an opportunity to help build its digital presence.",
+    contributions: [
+      "Suggested expanding the business online to reach more potential customers.",
+      "Help manage and develop its Instagram page.",
+      "Create and share product-related content and visual posts.",
+      "Support the early-stage promotion and online visibility of the business.",
+    ],
+    outcome: "This experience has helped me understand the basics of social media management, content creation and how small businesses can use digital platforms to connect with customers. It is an ongoing personal initiative that I work on in my free time.",
+    skills: ["Social Media Management", "Content Creation", "Digital Marketing"],
     photo: {
       src: tretelleLogo.url,
-      caption: "Tretelle Instagram page logo — homemade bakes by Suman Srivastava",
-      alt: "Circular Tretelle logo for homemade bakes and sweet treats with the Instagram handle @treatelle_by_suman",
+      caption: "Tretelle logo — homemade bakes and sweet treats by Suman Srivastava",
+      alt: "Circular sage green and cream Tretelle logo for homemade bakes and sweet treats with the Instagram handle @treatelle_by_suman",
     },
   },
 ];
@@ -89,7 +94,14 @@ function Projects() {
               <h2 className="mt-2 text-3xl text-primary">{p.title}</h2>
               <dl className="mt-5 space-y-3 text-sm">
                 <div><dt className="font-semibold text-primary">Context</dt><dd className="text-muted-foreground">{p.context}</dd></div>
-                <div><dt className="font-semibold text-primary">My contribution</dt><dd className="text-muted-foreground">{p.role}</dd></div>
+                <div>
+                  <dt className="font-semibold text-primary">My contribution</dt>
+                  <dd className="text-muted-foreground">
+                    {p.contributions
+                      ? <ul className="list-disc space-y-1 pl-5">{p.contributions.map((item) => <li key={item}>{item}</li>)}</ul>
+                      : p.role}
+                  </dd>
+                </div>
                 <div><dt className="font-semibold text-primary">Learning</dt><dd className="text-muted-foreground">{p.outcome}</dd></div>
               </dl>
               <div className="mt-5 flex flex-wrap gap-2">
