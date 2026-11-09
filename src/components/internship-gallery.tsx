@@ -11,13 +11,16 @@ export function InternshipGallery({
   title,
   photos,
   photoClassName = DEFAULT_PHOTO_CLASS,
+  gridClassName,
 }: {
-  title: string;
+  title?: string;
   photos: InternshipPhoto[];
   photoClassName?: string;
+  gridClassName?: string;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const active = selected === null ? undefined : photos[selected];
+  const gridClasses = gridClassName ?? `sm:grid-cols-2 ${photos.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`;
 
   function move(direction: number) {
     setSelected((current) => current === null ? null : (current + direction + photos.length) % photos.length);
@@ -25,8 +28,8 @@ export function InternshipGallery({
 
   return (
     <div className="mt-10 border-t pt-8">
-      <h3 className="text-2xl text-primary">{title} · Photographs</h3>
-      <div className={`mt-5 grid gap-x-5 gap-y-7 sm:grid-cols-2 ${photos.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+      {title && <h3 className="text-2xl text-primary">{title} · Photographs</h3>}
+      <div className={`mt-5 grid gap-x-5 gap-y-7 ${gridClasses}`}>
         {photos.map((photo, index) => (
           <figure key={photo.src} className="min-w-0">
             <Button variant="ghost" onClick={() => setSelected(index)} aria-label={`View ${photo.caption}`} className="group relative block h-auto w-full overflow-hidden rounded-lg border bg-muted p-0 hover:bg-muted">
