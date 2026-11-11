@@ -4,7 +4,7 @@ import { Expand, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { InternshipPhoto } from "@/components/internship-gallery";
 
-export function ProjectPhoto({ photo }: { photo: InternshipPhoto }) {
+export function ProjectPhoto({ photo, showCaption = true }: { photo: InternshipPhoto; showCaption?: boolean }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ export function ProjectPhoto({ photo }: { photo: InternshipPhoto }) {
           <Expand aria-hidden="true" />
         </span>
       </Button>
-      <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">{photo.caption}</figcaption>
+      {showCaption && <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">{photo.caption}</figcaption>}
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-primary/80 backdrop-blur-sm" />

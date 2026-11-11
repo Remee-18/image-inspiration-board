@@ -17,4 +17,5 @@
 - [x] Replace the Tretelle image with the privacy-edited logo (blurred phone number) and replace the project description with the sister's-business personal-initiative text; verify desktop and phone.
 - [x] Update About Me with the original uploaded portrait and supplied introduction/Career Interests; preserve all education and verify desktop/mobile.
 - [x] Add the University Anchoring & Event Hosting subsection to Achievements with the two uploaded photographs and the supplied description; verify desktop and phone.
+- [x] Replace the three Learning credentials evidence placeholders with the uploaded certificate photographs and verify desktop and phone.
 
