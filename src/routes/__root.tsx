@@ -14,7 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header, Footer } from "../components/site";
 import { getAnalyticsId } from "../lib/analytics.functions";
-import { initAnalytics, trackPageView } from "../lib/analytics";
+import { trackPageView } from "../lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -77,7 +77,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ loaderData: gaId }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -94,6 +94,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" },
     ],
+    // Google tag rendered into the server HTML so it is present on first load of every page.
+    scripts: gaId
+      ? [
+          { src: `https://www.googletagmanager.com/gtag/js?id=${gaId}`, async: true },
+          {
+            children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('set','developer_id.dZjgwMW',true);gtag('js',new Date());gtag('config','${gaId}');`,
+          },
+        ]
+      : [],
   }),
   loader: () => getAnalyticsId(),
   shellComponent: RootShell,
@@ -122,8 +131,6 @@ function RootComponent() {
   const router = useRouter();
   useEffect(() => {
     if (!gaId) return;
-    initAnalytics(gaId);
-    trackPageView(router.state.location.href);
     return router.subscribe("onResolved", (e) => {
       if (e.pathChanged) setTimeout(() => trackPageView(e.toLocation.href), 0);
     });
