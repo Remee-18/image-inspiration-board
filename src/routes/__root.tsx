@@ -13,6 +13,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header, Footer } from "../components/site";
+import { getAnalyticsId } from "../lib/analytics.functions";
+import { initAnalytics, trackPageView } from "../lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -93,6 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" },
     ],
   }),
+  loader: () => getAnalyticsId(),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -115,6 +118,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const gaId = Route.useLoaderData();
+  const router = useRouter();
+  useEffect(() => {
+    if (!gaId) return;
+    initAnalytics(gaId);
+    trackPageView(router.state.location.href);
+    return router.subscribe("onResolved", (e) => {
+      if (e.pathChanged) setTimeout(() => trackPageView(e.toLocation.href), 0);
+    });
+  }, [gaId, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
